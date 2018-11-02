@@ -25,24 +25,21 @@ public class PragraphMaxNumberOfWordOccured {
 
   public static List<String> occurenceWord(String str){
     String[] words = str.split(" ");
+    HashMap<String, Integer> wordMap = new HashMap<>();
+
     for(int i=0; i<words.length; i++){
       String eachWord = words[i];
       if(eachWord.contains(".") || eachWord.contains(",") || eachWord.contains("!") || eachWord.contains(")")) {
-        eachWord = eachWord.substring(0, eachWord.length()-1);
+        eachWord.substring(0, eachWord.length()-1);
       } else if(eachWord.contains("(")){
-        words[i] = eachWord.substring(1, eachWord.length());
+        eachWord.substring(1, eachWord.length());
       }
-    }
-
-    HashMap<String, Integer> wordMap = new HashMap<>();
-    for(int i=0; i< words.length; i++){
       if(wordMap.containsKey(words[i])){
         wordMap.put(words[i], wordMap.get(words[i]) +1);
       } else {
         wordMap.put(words[i], 1);
       }
     }
-
 
     maxCount = (Collections.max(wordMap.values()));
     List<String> listWords = new ArrayList<>();
@@ -53,5 +50,4 @@ public class PragraphMaxNumberOfWordOccured {
     }
     return listWords;
   }
-
 }
