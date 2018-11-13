@@ -29,11 +29,12 @@ public class PragraphMaxNumberOfWordOccured {
 
     for(int i=0; i<words.length; i++){
       String eachWord = words[i];
-      if(eachWord.contains(".") || eachWord.contains(",") || eachWord.contains("!") || eachWord.contains(")")) {
-        eachWord.substring(0, eachWord.length()-1);
-      } else if(eachWord.contains("(")){
-        eachWord.substring(1, eachWord.length());
+      if(eachWord.contains(".") || eachWord.contains("!") || eachWord.contains("?") || eachWord.contains(",")) {
+        eachWord = eachWord.substring(0, eachWord.length()-1);
+      } else if(eachWord.contains("[)}]]")){
+         eachWord =eachWord.substring(1, eachWord.length());
       }
+      System.out.print(eachWord +" ");
       if(wordMap.containsKey(words[i])){
         wordMap.put(words[i], wordMap.get(words[i]) +1);
       } else {
